@@ -412,9 +412,9 @@ class Order
         $alertEmails = array_map('trim', $alertEmails);
 
         //receipt
-        $customer = new StoreCustomer();
+        //$customer = new StoreCustomer();
         $mh->from($fromEmail, $fromName?$fromName:null);
-        $mh->to($customer->getEmail());
+        $mh->to($this->getAttribute("email"));
         $mh->addParameter("order", $this);
         $mh->load("order_receipt", "vivid_store");
         $mh->sendMail();
